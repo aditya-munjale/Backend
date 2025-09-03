@@ -32,3 +32,6 @@ To don't show --> use 'post' method
 
 get -> Use to bring data from server to frontend
 post -> Use to bring data from frontend to backend
+
+
+# Linking CSS with frontend
