@@ -1,9 +1,18 @@
-// Creating server using http
+// Creating Server usign express
 
-const http = require("http");
+const express = require("express");
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.end("Hello Server!");
+app.get("/", (req, res) => {
+  res.send("Hello Express");
 });
 
-server.listen(5000);
+app.get("/about", (req, res) => {
+  res.send("This is About page");
+});
+
+app.get("/home", (req, res) => {
+  res.send("This is Home page");
+});
+
+app.listen(4000);
