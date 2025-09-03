@@ -6,6 +6,9 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use((req, res, next) => {
   console.log("This is Middleware");
 
@@ -39,6 +42,11 @@ app.get("/about", (req, res) => {
 
 app.get("/home", (req, res) => {
   res.send("This is Home page");
+});
+
+app.post("/get-form-data", (req, res) => {
+  console.log(req.body);
+  res.send("Data Recived");
 });
 
 app.listen(4000);

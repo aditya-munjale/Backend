@@ -24,3 +24,11 @@
   - Third-party
 
   - It accepts three things (req,res,next)
+
+# Form Controls
+
+When we create route using 'get' method it shows the password in url
+To don't show --> use 'post' method
+
+get -> Use to bring data from server to frontend
+post -> Use to bring data from frontend to backend
