@@ -18,6 +18,9 @@
 - Middleware means Any request before going to router it should go through the function
 
 - Three Types of Middlewares
+
   - Built-in
   - Custome
   - Third-party
+
+  - It accepts three things (req,res,next)
