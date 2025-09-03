@@ -4,3 +4,8 @@
   - npm i express
   - require 
   - express: it's like a Tool box. storing all tools in app
+
+# Rendering HTML using express
+ - setup view engine
+ - ejs
+ 

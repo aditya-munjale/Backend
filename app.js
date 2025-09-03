@@ -14,15 +14,15 @@
 
 // server.listen(5000);
 
-
-
 // Creating Server usign express
 
 const express = require("express");
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.get("/", (req, res) => {
-  res.send("Hello Express");
+  res.render("index");
 });
 
 app.get("/about", (req, res) => {
