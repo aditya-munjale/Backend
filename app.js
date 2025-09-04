@@ -1,14 +1,16 @@
-// Creating Server usign express
+// Creating Server using express
 
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+const userModel = require("./models/user");
+const connection = require("./config/db");
 
 app.set("view engine", "ejs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));//linking css
+app.use(express.static("public")); //linking css
 
 app.use((req, res, next) => {
   console.log("This is Middleware");
@@ -49,5 +51,30 @@ app.post("/get-form-data", (req, res) => {
   console.log(req.body);
   res.send("Data Recived");
 });
+
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+
+app.post("/register", async (req, res) => {
+  const { username, email, password } = req.body;
+
+  await userModel.create({
+    username: username,
+    email: email,
+    password: password,
+  });
+
+  res.send("User Registerd");
+});
+
+// Start server **only after DB connection**
+connection
+  .then(() => {
+    app.listen(4000, () => console.log("Server running on port 4000"));
+  })
+  .catch((err) => {
+    console.error("DB connection failed:", err);
+  });
 
 app.listen(4000);

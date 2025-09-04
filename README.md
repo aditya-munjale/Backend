@@ -35,3 +35,6 @@ post -> Use to bring data from frontend to backend
 
 
 # Linking CSS with frontend
+
+# MongoDB 
+- npm i mongoos
