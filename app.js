@@ -68,13 +68,4 @@ app.post("/register", async (req, res) => {
   res.send("User Registerd");
 });
 
-// Start server **only after DB connection**
-connection
-  .then(() => {
-    app.listen(4000, () => console.log("Server running on port 4000"));
-  })
-  .catch((err) => {
-    console.error("DB connection failed:", err);
-  });
-
 app.listen(4000);
