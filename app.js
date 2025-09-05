@@ -68,4 +68,15 @@ app.post("/register", async (req, res) => {
   res.send("User Registerd");
 });
 
+app.get("/get-users", (req, res) => {
+  userModel
+    .find({
+      username: "John",
+    })
+    .then((user) => {
+      console.log(user);
+      res.send(user);
+    });
+});
+
 app.listen(4000);

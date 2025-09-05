@@ -38,3 +38,9 @@ post -> Use to bring data from frontend to backend
 
 # MongoDB 
 - npm i mongoos
+
+# CRUD Operations
+ - Create 
+ - Read
+ - Update 
+ - Delete 
