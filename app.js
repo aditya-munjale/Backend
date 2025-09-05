@@ -56,6 +56,7 @@ app.get("/register", (req, res) => {
   res.render("register");
 });
 
+// Create Operation
 app.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -68,6 +69,7 @@ app.post("/register", async (req, res) => {
   res.send("User Registerd");
 });
 
+// Read Operation
 app.get("/get-users", (req, res) => {
   userModel
     .find({
@@ -77,6 +79,29 @@ app.get("/get-users", (req, res) => {
       console.log(user);
       res.send(user);
     });
+});
+
+// Update Operation
+app.get("/update-user", async (req, res) => {
+  await userModel.findOneAndUpdate(
+    {
+      username: "Hari",
+    },
+    {
+      email: "haribol@.com",
+    }
+  );
+
+  res.send("User Updated");
+});
+
+// Delete Operation
+app.get("/delete-user", async (req, res) => {
+  await userModel.findOneAndDelete({
+    username: "John",
+  });
+
+  res.send("User Deleted");
 });
 
 app.listen(4000);
