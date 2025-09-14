@@ -33,14 +33,20 @@ To don't show --> use 'post' method
 get -> Use to bring data from server to frontend
 post -> Use to bring data from frontend to backend
 
-
 # Linking CSS with frontend
 
-# MongoDB 
+# MongoDB
+
 - npm i mongoos
 
 # CRUD Operations
- - Create 
- - Read
- - Update 
- - Delete 
+
+- Create
+- Read
+- Update
+- Delete
+
+# Dynamic Routing
+
+- "/profile/:username"
+- res.send(req.params.username)
