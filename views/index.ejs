@@ -3,9 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Task Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <h1>This is index.ejs page</h1>
+  <body class="w-full min-h-screen bg-blue-200 flex items-center justify-center">
+    <div class="w-full max-w-4xl p-6 bg-white rounded-2xl shadow-lg">
+      <!-- Form Section -->
+      <div class="form mb-8">
+        <form action="/create" method="post" class="flex flex-col gap-4">
+          <input
+            class="p-3 rounded-lg border border-gray-300 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            type="text"
+            placeholder="Task title..."
+            name="title"
+          />
+          <textarea
+            class="p-3 rounded-lg border border-gray-300 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 h-24 resize-none"
+            placeholder="Write your task details..."
+            name="details"
+          ></textarea>
+          <button
+            class="bg-blue-500 hover:bg-blue-600 transition text-white p-3 rounded-lg font-medium shadow"
+          >
+            ➕ Create Task
+          </button>
+        </form>
+      </div>
+
+      <!-- Task Section -->
+      <div class="tasks grid grid-cols-1 md:grid-cols-2 gap-4">
+        <% if (files.length > 0) { %> <% files.forEach(function(val){ %>
+        <div
+          class="task bg-gray-100 p-4 rounded-xl flex flex-col gap-2 hover:bg-gray-200 transition shadow-sm"
+        >
+          <h1 class="text-gray-900 font-semibold text-lg"><%= val %></h1>
+          <a
+            href="/file/<%= val %>"
+            class="text-blue-500 hover:text-blue-600 transition text-sm underline mb-2"
+            >Read more</a
+          >
+
+          <a
+            class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-center"
+            href="/edit/<%= val %>"
+            >Edit</a
+          >
+
+          <form action="/delete/<%= val %>" method="post">
+            <button
+              type="submit"
+              class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded w-full"
+            >
+              Delete
+            </button>
+          </form>
+        </div>
+        <% }) %> <% } else { %>
+        <h3 class="text-gray-500 text-center col-span-2">
+          No Task yet. Create one above!
+        </h3>
+        <% } %>
+      </div>
+    </div>
   </body>
 </html>
